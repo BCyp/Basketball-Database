@@ -31,12 +31,29 @@ var createTeamArray = function(name){
 	return newTeam;
 };
 
+
+var calcTeamScore = function(team){
+	var sum = 0;
+	  team.forEach(function(player){
+      	        sum = sum + player.threesMade * 3 + (player.fieldGoalsMade - player.threesMade) * 2 + player.freeThrowsMade;
+        });
+	return sum;
+};
+
+var pointsScor = function(team){
+	return	team.map(function(player){
+		 player.scored = 0  + player.threesMade * 3 + (player.fieldGoalsMade - player.threesMade) * 2 + player.freeThrowsMade;
+		return player.scored;
+	});
+};
 console.log(teamOne);
 nameOne = setFirstTeamName(playArray);
 nameTwo = setSecondTeamName(playArray);
 
 teamOne = createTeamArray(nameOne);
+teamTwo = createTeamArray(nameTwo);
 
-console.log(teamOne);
-console.log(typeof(playArray));
+console.log(calcTeamScore(teamOne));
+console.log(typeof(teamOne[1].threesMade));
 
+console.log(teamOne.pointsScoredArray);
