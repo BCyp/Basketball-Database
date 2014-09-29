@@ -34,10 +34,15 @@ var createTeamArray = function(name){
 
 var calcTeamScore = function(team){
 	var sum = 0;
+	var playerPointsArray = [];
 	  team.forEach(function(player){
-      	        sum = sum + player.threesMade * 3 + (player.fieldGoalsMade - player.threesMade) * 2 + player.freeThrowsMade;
+      	        sum = player.threesMade * 3 + (player.fieldGoalsMade - player.threesMade) * 2 + player.freeThrowsMade;
+		playerPointsArray.push(sum);
         });
-	return sum;
+	var teamScore = playerPointsArray.reduce(function( score, total){
+		return score + total;
+	});
+	return teamScore;
 };
 
 var pointsScor = function(team){
@@ -54,6 +59,4 @@ teamOne = createTeamArray(nameOne);
 teamTwo = createTeamArray(nameTwo);
 
 console.log(calcTeamScore(teamOne));
-console.log(typeof(teamOne[1].threesMade));
 
-console.log(teamOne.pointsScoredArray);
