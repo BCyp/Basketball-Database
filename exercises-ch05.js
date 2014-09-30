@@ -7,21 +7,23 @@ console.log(arrays);
 var aniRay= ['aardvark', 'abbreviate', 'abacuses', 'abandoners', 'abalones'];
 var numbs = [9, 48, 204, 528942];
 var every = function( ray){
+	var truth = true;
 	ray.forEach(function(part){
 		if ( part % 3 !== 0){
-			return false;
-		}
-	})
-	return true;
-}
+			truth = false;
+		};
+	});
+	return truth;
+};
 
 var some= function(animals){
+	var truth = false
 	animals.forEach(function(part){
 		if (part.length === 9){
-			return true;
-		}
+			truth = true;
+		};
 	});
-		return false;
-}
+		return truth;
+};
 console.log("Running every... " + every(numbs));
 console.log ("Running some... " + some(aniRay));
